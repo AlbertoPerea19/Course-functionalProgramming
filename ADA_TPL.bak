@@ -1,0 +1,31 @@
+#lang racket/base
+
+;Segundo Ejercicio
+(define (ordenado? l)
+  (if (null? (cdr l))
+    #t
+    (if (< (car l) (cadr l))
+     (ordenado?(cdr l))
+      #f)))
+
+;(ordenado? '(1 2 4 8 9 300))
+
+;Tercer ejercicio
+(define (iniciales l)
+  (map (lambda (letter)
+         (string->symbol
+          (string
+           (string-ref
+            (symbol->string letter) 0))))
+       l))
+;(iniciales '(Lenguajes y Paradigmas de Programación))
+
+;Cuarto Ejercicio
+(define (cuenta elem lista cont)
+(cond
+((null? lista) cont)
+((equal? elem (car lista)) (cuenta elem (cdr lista) (+ cont 1)))
+(else (cuenta elem (cdr lista) cont))
+)
+)
+(cuenta 2 '( 1 2 3 2 4 2 5) 0)
